@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Inspector Spacetime</title>
+
+	<!-- CSS -->
+	<link href='css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+	<link href='css/reset.min.css' rel='stylesheet' type='text/css'>
+	<link href='css/type.css' rel='stylesheet' type='text/css'>
+	<link href='css/style.css' rel='stylesheet' type='text/css'>
+	<link href='css/MotionPlayer.css' rel='stylesheet' type='text/css'>
+
+	<!-- JS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="js/MotionPlayer.min.js" type="text/javascript"></script>
+	<script src="js/main.js" type="text/javascript"></script>
+
+	<!-- OTHER -->
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+
+	<!-- NO CACHE -->
+	<meta http-equiv="cache-control" content="no-cache" />
+	<meta http-equiv="expires" content="-1" />
+	<meta http-equiv="pragma" content="no-cache" />
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,400" rel="stylesheet">
+</head>
+
+<body>
+	<header>
+		<h1>Inspector Spacetime</h1>
+		<h4 class="about">Inject motion specs into reference video to become an engineer's best friend</h4>
+		<a href="https://github.com/google/sktch2ae/archive/master.zip" class="btn btn-lg btn-primary">download</a>
+		<h5 class="about">Brought to you by your friends at Google Motion Design</h5>
+	</header>
+
+<!-- First section -->
+	<div class="band alt">
+		<div class="container">
+			<!-- <p>First section description.</p> -->
+			<div class="row section">
+			<div class="col-md-2"></div>
+				<div class="col-md-8">
+					<video loop controls src="videos/IST_Example.mp4" type="IST_Example.mp4" autoplay="true"></video>
+				</div>
+			</div>
+			<div class="row section">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+				<p class="text-center">
+				Specs are a necessary part of communicating UX to engineering.
+				It's often difficult and time consuming to deliver the data required to replicate motion on device.
+				With <i>Inspector Spacetime</i> you can generate this data along side the reference quicktime, with just one click.
+				</p>
+
+				<h5 class="text-center">This is not an official Google product. Motion designers at Google just kinda like it a lot. Built by <a href="http://battleaxe.co">Adam Plouff</a>.</h5>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<!-- Second section -->
+<div class="band">
+	<div class="container">
+		<p class="description">Download</p>
+		<hr />
+		<div class="row section">
+			<div class="col-md-3">
+					<p>
+						The script is open source and also available on <a href="https://github.com/google/sktch2ae">GitHub</a>.
+					</p>
+				</div>
+			<div class="col-md-6">
+				<ol>
+						<li><a href="https://github.com/google/sktch2ae/archive/master.zip">Download</a> the .jsx file</li>
+						<li>Close After Effects</li>
+						<li>Drag the downloaded script file into <i>Applications > Adobe After Effects [version number] > Scripts > ScriptUI Panels</i></li>
+						<li>Fire up After Effects again</li>
+						<li>Navigate to the <i>Window</i> menu up top. At the bottom you'll see InspectorSpacetime_[version number].jsx</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- Third section -->
+	<div class="band alt">
+		<div class="container">
+			<p class="description">Usage</p>
+			<hr />
+			<!-- <p>First section description.</p> -->
+			<div class="row section">
+				<!-- <div class="col-md-6">
+					<img src="gif/ISO_Rig_Example.gif">
+				</div> -->
+				<div class="col-md-4">
+					<img src="img/Panel.png">
+					<h4>Basics</h4>
+					<p>
+					Select a pair or several pairs of keyframes and click the button. Your comp will be duplicated and resized to create space for all the useful spec data to live right along side the reference animation.
+					</p>
+
+					<p>
+					A new text layer is generated with all the selected element data. Raw text may be edited. Enabling the expression will update style and live values.
+					</p>
+				</div>
+
+				<div class="col-md-4">
+					<img src="gif/StartTime.gif">
+					<h4>Live Text</h4>
+					<p>
+					Spec data is based on the overall transition time. Markers are created at the time of the first and last selected keyframes as a reference for the transition time. Moving the <i>Start</i> and <i>End</i> markers update:</p>
+					
+					<ul><li>Total Duration</li><li>Delay</li><li>Time Counter</li></ul>
+
+					<p><em>Spec Layer Name</em> heading comes from the layer name itself.</p>
+					
+				</div>
+				<div class="col-md-4">
+					<img src="gif/DataOutput.gif">
+					<h4>Data output</h4>
+					<p>Keyframe data output:</p>
+					<ul>
+						<li>Property name</li>
+						<li>Delay time (live value)</li>
+						<li>Duration of keyframe pair</li>
+						<li>Value change</li>
+						<li>Cubic Bezier interpolation curve</li>
+					</ul>
+					<h4>Position</h4>
+					<ul>
+						<li>May be coordinates or distance</li>
+						<li>3X is the default DP for working at 1080x1920</li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!-- Third section -->
+		<div class="band">
+			<div class="container">
+				<p class="description">Generator buttons</p>
+				<hr />
+				<!-- <p>First section description.</p> -->
+				<div class="row section">
+					<div class="col-md-4">
+						<img src="gif/IsoLayer.gif">
+						<h4>Isolation Layer</h4>
+						<p>
+						If your comp is really busy it can be tough to clearly see what's being spec'd. An isolation layer is just an adjustment layer that will grey out everything below it to get a little more focus on what you're showing.
+						</p>
+					</div>
+					<div class="col-md-4">
+						<img src="gif/TimeCounter.gif">
+						<h4>Time Counter</h4>
+						<p>
+						Created with every spec, a counter is also available as it's own layer. Create a millisecond counter with a defined <i>start</i> and <i>end</i> point. Start the timer at the beginning of the transition to easily illustrate the global start time.
+						</p>
+					</div>
+					<div class="col-md-4">
+						<img src="img/Pointer.png">
+						<h4>Pointer</h4>
+						<p>
+						Everyone names things differently which can lead to confusion. So draw a line from spec data to the visual element and save yourself a lot of explaining. This button will get you started, or just draw your own. Either way, it'll make your life easier
+						</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- Forth section -->
+		<div class="band alt">
+			<div class="container">
+				<p class="description">Why the dumb name?</p>
+				<hr />
+				<div class="row section">
+					<div class="col-md-4">
+					<p>
+						Named after the Doctor Who parody from the underrated NBC comedy Community. It was a really great show. <br><br>
+						In<u>spec</u>tor Spacetime. It's a bad pun. I'm a dad. I can't help it. 
+					</p>
+					</div>
+					<div class="col-md-8">
+						<div class="vidcontainer">
+						<iframe src="https://www.youtube.com/embed/WQAgPaJvvHU" frameborder="0" allowfullscreen class="video"></iframe>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+</body>
+<head>
+	<!-- NO CACHE -->
+	<meta http-equiv="cache-control" content="no-cache" />
+	<meta http-equiv="expires" content="-1" />
+	<meta http-equiv="pragma" content="no-cache" />
+</head>
+</html>
