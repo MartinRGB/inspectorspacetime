@@ -13,8 +13,8 @@ header {
     letter-spacing: 0.05em;
     padding: 80px 6%;
     text-align: center;
-    background-color: #03A9F4;
-    color: #ffffff;
+    background-color: #fbfbfb;
+    /*color: #ffffff;*/
 }
 
 videoheader {
@@ -26,12 +26,12 @@ videoheader {
 }
 
 header.img {
-    color: black !important;
+		color: black !important;
     background: none;
 }
 
 header.img h1 {
-    color: black;
+		color: black;
     background: none;
 }
 
@@ -83,7 +83,7 @@ img, video {
 }
 
 video {
-    margin: 80px 0 0 0;
+    margin: 40px 0;
 }
 
 .gallery {
@@ -110,11 +110,11 @@ video {
 }
 
 .animate {
-    margin-left: 0px !important;
+		margin-left: 0px !important;
 }
 
 .nav .group {
-  padding: 8px 0;
+	padding: 8px 0;
 }
 
 .nav .group ul {
@@ -182,7 +182,7 @@ video {
 
 /* Lists for taxonomies */
 .taxonomy p {
-  padding: 0 0 32px;
+	padding: 0 0 32px;
 }
 
 dl {
@@ -210,7 +210,7 @@ dt p {
 }
 
 dd {
-  clear: right;
+	clear: right;
 }
 
 li h4, li img {
@@ -219,23 +219,27 @@ li h4, li img {
 }
 
 .ontop {
-  margin-top: -140px;
-  margin-left: 8px;
-  z-index: 1;
+	margin-top: -140px;
+	margin-left: 8px;
+	z-index: 1;
 }
 
 .onbottom {
-  margin-top: -360px;
-  z-index: 1;
+	margin-top: -360px;
+	z-index: 1;
 }
 
 .admark {
-  width: 180px;
+	width: 180px;
 }
 
 
 .band{
-  background-color: #e6e6e6;
+  background-color: #fbfbfb;
+}
+.band-video{
+  background-color: #00aaf7;
+  color: #fff;
 }
 
 .band.alt{
@@ -333,19 +337,30 @@ tr.notes {
 tr.group {
   letter-spacing: 2px;
   font-style: italic;
-  border-left: 2px solid #42A5F5;
-}
-
-a.btn-primary {
-  background-color: #E1F5FE;
-  color: #0277BD;
-  border: none; 
-}
-a.btn-primary:hover {
-  background-color: #fff;
-  color: #0277BD;
+  border-left: 2px solid #00aaf7;
 }
 
 header img {
-  max-width: 180px;
+  display: block;
+  margin: auto;
+  padding: 20px 0 50px 0;
+}
+
+.col-md-4 {
+  padding: 0 40px;
+}
+
+a.btn {
+	background-color: #38bcf7;
+	border-color: #38bcf7;
+	border-radius: 4px;
+	color: #fff;
+	text-transform: uppercase;
+	font-style: normal;
+	padding: 14px 30px;
+}
+
+a:hover.btn {
+	background-color: #00aaf7;
+	border-color: #00aaf7;
 }

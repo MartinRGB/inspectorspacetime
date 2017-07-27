@@ -24,28 +24,31 @@
 	<meta http-equiv="expires" content="-1" />
 	<meta http-equiv="pragma" content="no-cache" />
 
-	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,400" rel="stylesheet">
 </head>
 
 <body>
 	<header>
 		<h1>Inspector Spacetime</h1>
-		<h4 class="about">Become an engineer’s best friend: Inject motion specs into reference video</h4>
+		<h4 class="about">from your friends at Google Motion Design</h4>
+
+		<img src="img/Inspector_Spacetime_logo.png" class="header-img" alt="Sketch2AE" style="width:160px;">
 		<a href="https://github.com/google/inspectorspacetime/archive/master.zip" class="btn btn-lg btn-primary">download</a>
-		<h5 class="about">Brought to you by your friends at Google Motion Design</h5>
 	</header>
 
 <!-- First section -->
-	<div class="band alt">
+	<div class="band-video">
 		<div class="container">
 			<!-- <p>First section description.</p> -->
 			<div class="row section">
+				<div class="col-md-12">
+					<h3 class="about">Inject motion specs into reference video to become an engineer’s best friend</h3>
+
 			<div class="col-md-2"></div>
 				<div class="col-md-8">
+
 					<video loop controls src="videos/IST_Example.mp4" type="IST_Example.mp4" autoplay="true"></video>
 				</div>
 			</div>
-			<div class="row section">
 			<div class="col-md-2"></div>
 			<div class="col-md-8">
 				<p class="text-center">
@@ -97,7 +100,7 @@
 				</div> -->
 				<div class="col-md-4">
 					<img src="img/Panel.png">
-					<h4>Basics</h4>
+					<h3>Basics</h3>
 					<p>
 					Select a pair or several pairs of keyframes and click the giant button. Your comp will be duplicated and resized to create space for all the useful spec data to live right alongside the reference animation.
 					</p>
@@ -109,7 +112,7 @@
 
 				<div class="col-md-4">
 					<img src="gif/StartTime.gif">
-					<h4>Live Text</h4>
+					<h3>Live Text</h3>
 					<p>
 					Spec data is based on the overall transition time. Markers are placed at the time of the first and last selected keyframes as a reference for the transition time. Moving the <i>start</i> and <i>end</i> markers updates:</p>
 
@@ -120,7 +123,7 @@
 				</div>
 				<div class="col-md-4">
 					<img src="gif/DataOutput.gif">
-					<h4>Data output</h4>
+					<h3>Data output</h3>
 					<p>Keyframe data output:</p>
 					<ul>
 						<li>Property name</li>
@@ -129,7 +132,7 @@
 						<li>Value change</li>
 						<li>Cubic Bezier interpolation curve</li>
 					</ul>
-					<h4>Position</h4>
+					<h3>Position</h3>
 					<ul>
 						<li>May be coordinates or distance</li>
 						<li>3X is the default DP for working at 1080x1920</li>
@@ -148,21 +151,21 @@
 				<div class="row section">
 					<div class="col-md-4">
 						<img src="gif/IsoLayer.gif">
-						<h4>Isolation Layer</h4>
+						<h3>Isolation Layer</h3>
 						<p>
 						If your comp is really busy it can be tough to clearly see what's being spec'd. An isolation layer is just an adjustment layer that will grey out everything below it to get a little more focus on what you're showing.
 						</p>
 					</div>
 					<div class="col-md-4">
 						<img src="gif/TimeCounter.gif">
-						<h4>Time Counter</h4>
+						<h3>Time Counter</h3>
 						<p>
 						Created with every spec, a counter is also available as its own layer. Create a millisecond counter with a defined <i>start</i> and <i>end</i> point. Start the timer at the beginning of the transition to easily illustrate the global start time.
 						</p>
 					</div>
 					<div class="col-md-4">
 						<img src="img/Pointer.png">
-						<h4>Pointer</h4>
+						<h3>Pointer</h3>
 						<p>
 						Everyone names things differently, which can lead to confusion. So draw a line from spec data to the visual element and save yourself a lot of explaining. This button will get you started, or just draw your own. Either way, it'll make your life easier.
 						</p>
