@@ -13,17 +13,17 @@ body {
 }
 
 a:link, a:visited {
-    color: #8426cb;
+    color: #38bcf7;
     text-decoration: none;
     font-style: italic;
 }
 
 .band-video a:link, .band-video a:visited {
-	color: #e2bbff;
+	color: #c4edff;
 }
 
 a:hover, .band-video a:hover {
-    color: #563171;
+    color: #38bcf7;
     background-color: #E3F2FD;
 }
 
