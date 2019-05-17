@@ -33,7 +33,7 @@ var scriptName = 'Inspector Spacetime';
 var scriptVersion = '2.1';
 var thisComp, inspectorFolder, margin, leftEdge, panelSize = [0, 0], dataSize = [0, 0];
 
-var exp_conv = 'var sTime = marker.key(\'Start\').time;\r\nvar eTime = marker.key(\'End\').time;\r\nvar totalTime = Math.max(eTime - sTime, 0);\r\nvar countTime = Math.max(time - sTime, 0);\r\ncountTime = Math.min(countTime, eTime - sTime);\r\nvar counter = Math.round( countTime * 1000) + \'ms\';\r\nvar playIcon = (time > sTime && time < eTime) ? \'\\u25ba \' + counter : \'\\u25a0\';\r\n\r\nvar txtGroups = value.split(\'**\');\r\nvar groupArr = [];\r\n\r\nfor (var i = 1; i < txtGroups.length; i++) {\r\n\tvar groupLines = txtGroups[i].split(\'\\r\');\r\n\tgroupArr.push(\r\n\t\t\'\\u2261 \'+ groupLines[0].split(\':\')[1] + \' \\u2261\\r\' + \r\n\t\t\'Delay: \'+ Math.round((parseFloat(groupLines[1].split(\':\')[1]) - sTime) * 1000)  + \'ms\\t\\t\\t\' + \r\n\t\t\'Dur: \' + groupLines[2].split(\':\')[1] + \'\\r\' + \r\n\t\t\'\\u2302 Val: \' + groupLines[3].split(\':\')[1] + \'\\r\' + \r\n\t\tgroupLines[4]\r\n\t);\r\n}\r\n\r\nthisLayer.name + \'\\r\' + \t\t\t\t\/\/ layer name\r\n\'Total Dur: \' + Math.round(totalTime*1000) + \'ms\' + \'\\r\\r\' + \t\t\t\t\t\/\/ line 2 - duration\r\ngroupArr.join(\'\\r\\r\') + \r\n\r\n\'\\r\\r\u2013\u2013\u2013\\r\' + playIcon;';
+var exp_conv = 'var sTime = marker.key(\'Start\').time;\r\nvar eTime = marker.key(\'End\').time;\r\nvar totalTime = Math.max(eTime - sTime, 0);\r\nvar countTime = Math.max(time - sTime, 0);\r\ncountTime = Math.min(countTime, eTime - sTime);\r\nvar counter = Math.round( countTime * 1000) + \'ms\';\r\nvar playIcon = (time > sTime && time < eTime) ? \'\\u25ba \' + counter : \'\\u25a0\';\r\n\r\nvar txtGroups = value.split(\'**\');\r\nvar groupArr = [];\r\n\r\nfor (var i = 1; i < txtGroups.length; i++) {\r\n\tvar groupLines = txtGroups[i].split(\'\\r\');\r\n\tgroupArr.push(\r\n\t\t\'\\u2261 \'+ groupLines[0].split(\':\')[1] + \' \\u2261\\r\' + \r\n\t\t\'StartOffset: \'+ Math.round((parseFloat(groupLines[1].split(\':\')[1]) - sTime) * 1000)  + \'ms\\t\\t\\t\' + \r\n\t\t\'Duration: \' + groupLines[2].split(\':\')[1] + \'\\r\' + \r\n\t\t\'\\u2302 Value: \' + groupLines[3].split(\':\')[1] + \'\\r\' + \r\n\t\tgroupLines[4]\r\n\t);\r\n}\r\n\r\nthisLayer.name + \'\\r\' + \t\t\t\t\/\/ layer name\r\n\'Total Duration: \' + Math.round(totalTime*1000) + \'ms\' + \'\\r\\r\' + \t\t\t\t\t\/\/ line 2 - duration\r\ngroupArr.join(\'\\r\\r\') + \r\n\r\n\'\\r\\r\u2013\u2013\u2013\\r\' + playIcon;';
 var exp_counter = 'var sTime = marker.key(\'Start\').time;\r\nvar eTime = marker.key(\'End\').time;\r\nvar countTime = Math.max(time - sTime, 0);\r\ncountTime = Math.min(countTime, eTime - sTime);\r\nvar counter = Math.round( countTime * 1000) + \'ms\';\r\nvar playIcon = (time > sTime && time < eTime) ? \'\\u25ba \' + counter : \'\\u25a0\';\r\n\r\nplayIcon;';
 
 var icons = {																																		// icon string for retina icons
@@ -232,8 +232,8 @@ function buildText_live(p, firstKeyTime) {
 		for (var i = 0; i < p.length; i++) {																								// loop through collected props
 			propStr += '**Name:' + p[i].name + '\n';																						// add prop name to text string
 			propStr += 'Start:' + p[i].startTime + '\n';							// add start time
-			propStr += 'Dur:' + timeToMs(p[i].dur) + '\n';																		// add duration
-			propStr += 'Val:' + getValChange(p[i]) + '\n';																		// add value change
+			propStr += 'Duration:' + timeToMs(p[i].dur) + '\n';																		// add duration
+			propStr += 'Value:' + getValChange(p[i]) + '\n';																		// add value change
 			propStr += getEase(p[i]) + '\n\n';																								// add interpolation value
 		}
 
@@ -284,7 +284,7 @@ function buildText_basic(p, firstKeyTime) {
 		}
 
 		propStr += 'Spec Layer Name\n';
-		propStr += 'Total Dur: ' + timeToMs(p[0].totalDur) + '\n\n';
+		propStr += 'Total Duration: ' + timeToMs(p[0].totalDur) + '\n\n';
 
 		propStr += buildTextBlock(p);
 
@@ -365,17 +365,50 @@ function buildTextBlock(p, op_firstKeyTime) {
 
 		for (var i = 0; i < layer.props.length; i++) {
 			prop = layer.props[i];
-			str += '- ' + prop.name + ' -\n';
+			str += '- ' + getAndroidPropName(prop.name) + ' -\n';
+			
 			// str += 'Start: ' + timeToMs(prop.startTime) + '\n';							// add start time
-			str += 'Delay: ' + timeToMs(prop.startTime - firstKeyTime) + '\n';
-			str += 'Dur: ' + timeToMs(prop.dur) + '\n';
-			str += 'Val: ' + getValChange(prop) + '\n';
+			str += 'StartOffset: ' + timeToMs(prop.startTime - firstKeyTime) + '\n';
+			str += 'Duration: ' + timeToMs(prop.dur) + '\n';
+			str += 'Value: ' + getValChange(prop) + '\n';
 			str += getEase(prop) + '\n\n';		// add interpolation value
 		}
 	}
 
 	return str;
 }
+
+
+// ========================= 添加 AE 属性 Key ========================= 
+
+function getAndroidPropName(prop) {
+	switch (prop) {						// check the property match name
+		case 'X Position':													// is Scale
+			return 'TranslateX';
+			break;
+		case 'Y Position':											// is seperated X position
+			return 'TranslateY';
+			break;
+		case 'Rotation':											// is seperated Y position
+			return 'RotationZ';
+			break;
+		case 'Z Rotation':												// is Position array
+			return 'RotationZ';
+			break;
+		case 'Y Rotation':												// is Rotation
+			return 'RotationY';
+			break;
+		case 'X Rotation':												// is Opacity
+			return 'RotationX';
+			break;
+		case 'Opacity':											// is a Mask
+			return 'Alpha';
+			break;
+		default:																		// is anything else
+			return prop;
+	}
+}
+
 
 function getPropObj(opt_propObj) {
 	if (opt_propObj == undefined) {
@@ -553,7 +586,7 @@ function getPropData() {
 function getPropText(propObj) {
 	var propStr = '';
 
-	propStr += 'Total Dur: ' + timeToMs(propObj.lastKeyTime - propObj.firstKeyTime) + '\n\n';
+	propStr += 'Total Duration: ' + timeToMs(propObj.lastKeyTime - propObj.firstKeyTime) + '\n\n';
 
 	propStr += buildTextBlock(propObj);
 
@@ -633,13 +666,13 @@ function getEase(activeProp) {
 
 	//// check type of keys
 	if (activeProp.startEaseType == KeyframeInterpolationType.LINEAR && activeProp.endEaseType == KeyframeInterpolationType.LINEAR) {
-	  return 'Linear';																																			// return if linear keys
+	  return 'LinearInterpolator';																																			// return if linear keys
   } else if (activeProp.startEaseType == KeyframeInterpolationType.HOLD){
 	  return 'Hold';																																		// return if no change
 	} else if (isNaN(y1)){
 	  return 'No Change';																																		// return if no change
 	} else {
-	  return '(' + round(x1) + ', ' + round(y1) + ', ' + round(x2) + ', ' + round(y2) + ')';// return cubic bezier string
+	  return 'PathInterpolator' + '(' + round(x1) + ', ' + round(y1) + ', ' + round(x2) + ', ' + round(y2) + ')';// return cubic bezier string
 	}
 	}catch(e) {return '()'}																																	// error catch returns ()
 }
@@ -665,7 +698,7 @@ function resizeCompNew(work_comp) {
 
 	var compSize = [thisComp.width, thisComp.height];																				// init compSize from new comp
 
-	panelSize = [Math.floor(thisComp.height/3), thisComp.height];														// set panelSize
+	panelSize = [Math.floor(thisComp.height/3 + 270), thisComp.height];														// set panelSize
 	leftEdge = thisComp.width;																															// set leftEdge
 
 	thisComp.width = leftEdge + panelSize[0];																								// resize comp
